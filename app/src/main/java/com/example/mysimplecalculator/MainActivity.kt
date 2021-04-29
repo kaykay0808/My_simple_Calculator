@@ -46,6 +46,41 @@ class MainActivity : AppCompatActivity() {
             lastDot = true
         }
     }
+
+    fun onEqual (view: View){
+        if(lastNumeric){
+            var tvValue = binding.tvInput.text.toString()
+            var prefix = ""
+            try{
+                if(tvValue.startsWith("-")){
+                    prefix = "-"
+                    tvValue = tvValue.substring(1)
+                }
+
+                if (tvValue.contains("-")){
+
+                    // need to split String so it understand what is right and left of the operator
+                    val splitValue = tvValue.split("-")
+
+                    var one = splitValue[0] // 99
+                    var two = splitValue[1] // 1
+                    // example: 99 - 1
+
+                    if (!prefix.isEmpty()){
+                        one = prefix + 1
+                    }
+
+
+                    // THe calculation -> we convert it to Double and then to String
+                    binding.tvInput.text = (one.toDouble() - two.toDouble()).toString()
+                }
+
+            }catch (e: ArithmeticException){
+                e.printStackTrace()
+            }
+        }
+    }
+
     fun onOperator(view: View){
         if (lastNumeric && !isOperatorAdded(binding.tvInput.text.toString())){
             binding.tvInput.append((view as Button).text)
