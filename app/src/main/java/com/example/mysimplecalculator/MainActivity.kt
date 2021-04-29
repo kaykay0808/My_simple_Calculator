@@ -25,6 +25,10 @@ class MainActivity : AppCompatActivity() {
         //set text below from button
         binding.tvInput.append((view as Button).text) //<-- this makes the texview input show the text of the button.
         lastNumeric = true
+
+        /*if(binding.tvInput.text.contains("1"))
+            binding.tvInput.text = "Haha"*/
+
         
     }
     //clear function
@@ -40,6 +44,22 @@ class MainActivity : AppCompatActivity() {
             binding.tvInput.append(".")
             lastNumeric = false
             lastDot = true
+        }
+    }
+    fun onOperator(view: View){
+        if (lastNumeric && !isOperatorAdded(binding.tvInput.text.toString())){
+            binding.tvInput.append((view as Button).text)
+            lastNumeric = false
+            lastDot = false
+        }
+    }
+
+    // check if the operator is used
+    private fun isOperatorAdded(value: String) : Boolean{
+        return if (value.startsWith("-")){
+            false
+        }else{
+            value.contains("/") || value.contains("*") || value.contains("+") || value.contains("-")
         }
     }
 }
