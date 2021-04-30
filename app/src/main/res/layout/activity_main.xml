@@ -7,13 +7,16 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-     <!-- Input View -->
+    <!-- Input View -->
     <TextView
         android:id="@+id/tvInput"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="250dp"
         android:background="#efefef"
+        android:gravity="right|center_vertical|bottom"
         android:maxLength="12"
+        android:padding="10dp"
+        android:text="0"
         android:textSize="48sp" />
     <!-- Row 1 -->
     <LinearLayout
@@ -191,8 +194,8 @@
             android:id="@+id/btnEqual"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="="
-            android:onClick="onEqual" />
+            android:onClick="onEqual"
+            android:text="=" />
     </LinearLayout>
 
 </LinearLayout>
