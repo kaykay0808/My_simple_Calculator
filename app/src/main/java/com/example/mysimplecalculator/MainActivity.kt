@@ -1,10 +1,9 @@
 package com.example.mysimplecalculator
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.mysimplecalculator.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -22,18 +21,16 @@ class MainActivity : AppCompatActivity() {
 
     // instead of using an onClickListener.
     fun onDigit(view: View) {
-        //Toast.makeText(this, "Button works", Toast.LENGTH_SHORT).show()
-        //set text below from button
-        binding.tvInput.append((view as Button).text) //<-- this makes the texview input show the text of the button.
+        // Toast.makeText(this, "Button works", Toast.LENGTH_SHORT).show()
+        // set text below from button
+        binding.tvInput.append((view as Button).text) // <-- this makes the texview input show the text of the button.
         lastNumeric = true
 
         /*if(binding.tvInput.text.contains("1"))
             binding.tvInput.text = "Haha"*/
-
-
     }
 
-    //clear function
+    // clear function
     fun onClear(view: View) {
         binding.tvInput.text = ""
         lastNumeric = false
@@ -70,9 +67,7 @@ class MainActivity : AppCompatActivity() {
                     }
                     // THe calculation -> we convert it to Double and then to String
                     binding.tvInput.text = removeZeroAfterDot((one.toDouble() - two.toDouble()).toString())
-
-
-                }else if (tvValue.contains("/")) {
+                } else if (tvValue.contains("/")) {
                     // need to split String so it understand what is right and left of the operator
                     val splitValue = tvValue.split("/")
                     var one = splitValue[0] // 99
@@ -83,9 +78,7 @@ class MainActivity : AppCompatActivity() {
                     }
                     // THe calculation -> we convert it to Double and then to String
                     binding.tvInput.text = removeZeroAfterDot((one.toDouble() / two.toDouble()).toString())
-
-
-                }else if (tvValue.contains("+")) {
+                } else if (tvValue.contains("+")) {
                     // need to split String so it understand what is right and left of the operator
                     val splitValue = tvValue.split("+")
                     var one = splitValue[0] // 99
@@ -96,9 +89,7 @@ class MainActivity : AppCompatActivity() {
                     }
                     // THe calculation -> we convert it to Double and then to String
                     binding.tvInput.text = removeZeroAfterDot((one.toDouble() + two.toDouble()).toString())
-
-
-                }else if (tvValue.contains("*")) {
+                } else if (tvValue.contains("*")) {
                     // need to split String so it understand what is right and left of the operator
                     val splitValue = tvValue.split("*")
                     var one = splitValue[0] // 99
@@ -110,16 +101,15 @@ class MainActivity : AppCompatActivity() {
                     // THe calculation -> we convert it to Double and then to String
                     binding.tvInput.text = removeZeroAfterDot((one.toDouble() * two.toDouble()).toString())
                 }
-
             } catch (e: ArithmeticException) {
                 e.printStackTrace()
             }
         }
     }
     // This function removes second index after .0
-    fun removeZeroAfterDot(result: String) : String{
+    fun removeZeroAfterDot(result: String): String {
         var value = result
-        if(result.contains(".0"))
+        if (result.contains(".0"))
             value = result.substring(0, result.length - 2)
         return value
     }

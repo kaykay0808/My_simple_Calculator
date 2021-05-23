@@ -13,10 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:background="#efefef"
-        android:gravity="right|center_vertical|bottom"
+        android:gravity="end|center_vertical|bottom"
         android:maxLength="12"
         android:padding="10dp"
-        android:text="0"
+        android:text="@string/_0"
         android:textSize="48sp" />
     <!-- Row 1 -->
     <LinearLayout
